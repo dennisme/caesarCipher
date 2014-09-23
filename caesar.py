@@ -15,11 +15,10 @@ group.add_argument("-e", "--encrypt", action="store_true",
 group.add_argument("-d", "--decrypt", action="store_true",
        help="Decrypt Alice's cyphertext" )
 group.add_argument("-c", "--charlie", action="store_true", 
-        help="Charlie's intercepted cyphertext")
+        help="Charlie's intercepted tampered cyphertext")
 group.add_argument("-diff", "--difference", action="store_true",
       help="Decrypting Charlie's modified cyphertext")
-parser.add_argument("-s","--string", 
-        help="String to be encrypted or decryped")
+parser.add_argument("string",help="String to be encrypted or decryped")
 
 
 def encrypt_plaintext(args):
@@ -46,7 +45,7 @@ def compare_intercepted(args):
     print "diff works"
     print args.string
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     args = parser.parse_args()
     if args.encrypt:
         encrypt_plaintext(args)
@@ -56,5 +55,7 @@ if __name__ == '__main__':
         decrypt_intercepted(args)
     elif args.difference:
         compare_intercepted(args)
+#    elif args.string  
+#        print "testing 123"
     else:
         print "Error, please see usage or --help for assistance"
