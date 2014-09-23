@@ -7,6 +7,7 @@ Assignment 1
 
 """
 import argparse
+import binascii
 
 parser = argparse.ArgumentParser(description="Caesar Cipher")
 group = parser.add_mutually_exclusive_group()
@@ -38,9 +39,23 @@ def decrypt_cyphertext(args):
     print "Bob's decrypted message is: " + pt
 
 def decrypt_intercepted(args):
-    print "charlie works"
-    print args.string
-
+    #ascii to binary 
+    #flip 10 bits (I chose first 10)
+    #encript then print it
+    message = args.string.lower()
+    pt = ""
+    key = 3
+    flipped = ""
+    binary_ct = "0" + bin(int(binascii.hexlify(message), 16))[2:]
+    #hex is base 16 so we are taking the message -> then to binary
+    #then we trim off the 0b and add 
+    #add on 0 so it is even/divisible by 8
+    #print binary_ct
+    for i in binary_ct[:10]:
+        tmp = int(i)
+        tmp ^= 1
+        flipped += str(tmp)
+    print flipped
 def compare_intercepted(args):
     print "diff works"
     print args.string
@@ -55,7 +70,5 @@ if __name__ == "__main__":
         decrypt_intercepted(args)
     elif args.difference:
         compare_intercepted(args)
-#    elif args.string  
-#        print "testing 123"
     else:
         print "Error, please see usage or --help for assistance"
