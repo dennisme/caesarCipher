@@ -3,7 +3,8 @@ Caesar Cipher
 
 This is a quick program that uses the Caesar Cipher.
 
-In order to use simply fork the script and make it executable:  
+In order to use simply download it and make it executable:
+
 `sudo chmod +x caesarCipher.py `  
   
 
