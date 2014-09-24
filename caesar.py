@@ -46,14 +46,17 @@ def decrypt_intercepted(args):
     flipped = ""
     binary_ct = bin(int(binascii.hexlify(message), 16))
     print "Charlie's intercepted cyphtext in binary:" + "\n" + binary_ct
-
-    for i in binary_ct[2:12]:
+     
+    for i in binary_ct[-10:]:
         tmp = int(i)
         tmp ^= 1
         flipped += str(tmp)
-    print "Charlie xor of the 2nd bit to the 12th bit:" "\n" + flipped
+    print flipped 
+    print len(flipped)
     
-    ctBinary = binary_ct[2:] + flipped + binary_ct[13:(len(binary_ct))]
+    ctBinary = binary_ct[:-10] + flipped 
+    print ctBinary
+    
     tampered_ct = binascii.unhexlify('%x' % (int(ctBinary, 2)))
     print "The tampered cyphertext after conversion:" + "\n" + tampered_ct
 
