@@ -55,7 +55,7 @@ def decrypt_intercepted(args):
     print "Charlie's tampered cyphertext in binary:" + "\n" + ctBinary
     
     tampered_ct = binascii.unhexlify('%x' % (int(ctBinary, 2)))
-    print "The tampered cyphertext after conversion:" + "\n" + tampered_ct
+    print repr("The tampered cyphertext after conversion:" + "\n" + tampered_ct)
 
 
 def compare_intercepted(args):
@@ -69,7 +69,9 @@ def compare_intercepted(args):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    if args.encrypt:
+    if str.isalpha(args.string) == False:
+        raise ValueError('The string must be alphabetic characters')
+    elif args.encrypt:
         encrypt_plaintext(args)
     elif args.decrypt:
         decrypt_cyphertext(args)
