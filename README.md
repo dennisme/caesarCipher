@@ -8,29 +8,34 @@ In order to use simply download it and make it executable:
 `sudo chmod +x caesarCipher.py `  
   
 
-###Usage: 
+### Usage: 
 
 
 ```python
 python caesarCipher.py --help
 ```
+
 ```python
 python caesarCipher.py --h
 ```
+
 ```python
 python caesarCipher.py -e test
 ```
+
 ```python
 python caesarCipher.py -d test
 ```
+
 ```python
 python caesarCipher.py -c whvw
 ```
+
 ```python
 python caesarCipher.py -diff whvw
 ```
 
-###Known Issues:
+### Known Issues:
 
 If you wanted to tamper with a ciphertext by running it through the 
 'decrypt_intercepted', -diff function and then decrypt it using 
@@ -49,7 +54,7 @@ will cause problims with the command line. A workaround is to put the string
 you are passing in parenthesis. ex. 'test'
  
 
-###Future Improvements:
+### Future Improvements:
 
 I would like to add an argument for a custom key. This would require another 
 propositional argument of type int.  
@@ -63,9 +68,3 @@ program cleaner. But the directions stated only 4 functions.
 
 Currently the passed string to decrypt or encrypt accepts characters that are
 not in the alphabet.
-
-
-
-
-
-
